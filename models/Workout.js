@@ -14,10 +14,22 @@ const workoutSchema = new Schema(
         },
         exercises: [
             {
+                name: {
+
+                },
                 type: {
                     type: String,
                     trim: true
-                }
+                },
+                name: {
+
+                },
+                name: {
+
+                },
+                name: {
+
+                },
             }
         ]
 }
