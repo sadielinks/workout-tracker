@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+// morgan?
 const routes = require('./routes');
 const path = require('path');
 const app = express();
@@ -12,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-const Workout = require('./models')
+const Workout = require('./models/Workout')
 
 
 app.listen(PORT, () => {
