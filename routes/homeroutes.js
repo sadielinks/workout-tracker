@@ -14,3 +14,9 @@ router.get("/", (req, res) => {
     // route to exercise.html
     res.sendFile(path.join(__dirname, "../public/exercise.html"));
 });
+
+// add workout dashboard route
+router.get("/", (req, res) => {
+    // route to stats.html
+    res.sendFile(path.join(__dirname, "../public/stats.html"));
+});
