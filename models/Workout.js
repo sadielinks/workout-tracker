@@ -11,32 +11,43 @@ const workoutSchema = new Schema(
         },
         exercises: [
             {
+                // resistance OR cardio
                 type: {
                     type: String,
                     trim: true
                 },
+                // resistance + cardio
                 name: {
                     type: String,
-                    trim: true
+                    required: true
                 },
+                // resistance + cardio
                 duration: {
                     type: Number,
-                    trim: true
+                    required: true
                 },
+                // resistance only
                 weight: {
                     type: Number,
                 },
+                // resistance only
                 reps: {
                     type: Number
                 },
+                // resistance only
                 sets: {
                     type: Number
                 },
+                // cardio only
+                distance: {
+                    type: Number
+                },
+
             },
         ],
 },
 );
 
-
 const Workout = mongoose.model('Workout', workoutSchema);
+
 module.exports = Workout;
