@@ -8,3 +8,9 @@ router.get("/", (req, res) => {
     // route to index.html
     res.sendFile(path.join(__dirname, "../public/index.html"));
 });
+
+// add exercise route
+router.get("/", (req, res) => {
+    // route to exercise.html
+    res.sendFile(path.join(__dirname, "../public/exercise.html"));
+});
