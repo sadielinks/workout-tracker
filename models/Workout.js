@@ -35,14 +35,8 @@ const workoutSchema = new Schema(
             },
         ],
 },
-
-// mongoose virtuals https://mongoosejs.com/docs/tutorials/virtuals.html
-{
-    toJSON: {
-        virtuals: true,
-    },
-},
 );
+
 
 const Workout = mongoose.model('Workout', workoutSchema);
 module.exports = Workout;
