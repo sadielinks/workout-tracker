@@ -48,10 +48,7 @@ Users are able to:
 ## Technologies
 
 The technologies used to create this program were: 
-- Javascript
-- Node.JS - Express.JS
-- Sequelize ORM
-- MySQL
+
 <br><br>
 
 ## Screenshots
