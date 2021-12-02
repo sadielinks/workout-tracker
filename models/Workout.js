@@ -14,7 +14,8 @@ const workoutSchema = new Schema(
                 // resistance OR cardio
                 type: {
                     type: String,
-                    trim: true
+                    trim: true,
+                    required: true
                 },
                 // resistance + cardio
                 name: {
