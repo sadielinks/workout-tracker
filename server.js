@@ -20,5 +20,5 @@ app.use(require("./routes/api.js"));
 app.use(require("./routes/homeroutes.js"));
 
 app.listen(PORT, () => {
-  console.log(`Running on port ${PORT}!!!!`);
+  console.log(`App listening on port ${PORT}!!!!`);
 });
