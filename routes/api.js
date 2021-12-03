@@ -24,6 +24,12 @@ router.put('/api/workouts/:id', (req, res) => {
             exercises: req.body
           }
     })
+    .then(dbWorkout => {
+        res.json(dbWorkout);
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    });
 });
 
 // createWorkout(data = {}) (public/api.js line 26)
