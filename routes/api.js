@@ -4,7 +4,7 @@ const Workout = require("../models/Workout.js");
 // using public/api.js to build following routes
 
 // getLastWorkout() (public/api.js line 2)
-router.get('/api/workouts', (req, res) => {
+router.get('/api/workout', (req, res) => {
     Workout.find()
         .then(dbWorkout => {
             res.json(dbWorkout);
@@ -15,7 +15,7 @@ router.get('/api/workouts', (req, res) => {
 })
 
 // addExercise(data) (public/api.js line 13)
-router.put('/api/workouts/:id', (req, res) => {
+router.put('/api/workout/:id', (req, res) => {
     console.log(req.body);
     // https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
     Workout.findByIdAndUpdate(req.params.id, {
@@ -33,7 +33,7 @@ router.put('/api/workouts/:id', (req, res) => {
 });
 
 // createWorkout(data = {}) (public/api.js line 26)
-router.post("/api/workouts", (req, res) => {
+router.post("/api/workout", (req, res) => {
     Workout.create(req.body)
       .then(dbWorkout => {
         res.json(dbWorkout);
@@ -45,7 +45,7 @@ router.post("/api/workouts", (req, res) => {
 
 
 // getWorkoutsInRange() (public/api.js line 38)
-router.get("/api/workouts/range", (req, res) => {
+router.get("/api/workout/range", (req, res) => {
     Workout.find({})
     .sort("-day")
     .limit(7)
