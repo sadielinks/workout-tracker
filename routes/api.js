@@ -47,6 +47,8 @@ router.post("/api/workouts", (req, res) => {
 // getWorkoutsInRange() (public/api.js line 38)
 router.get("/api/workouts/range", (req, res) => {
     Workout.find({})
+    .sort("-day")
+    .limit(7)
       .then(dbWorkout => {
         console.log(dbWorkout);
         res.json(dbWorkout);
