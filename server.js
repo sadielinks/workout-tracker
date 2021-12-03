@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// morgan?
+const morgan = require('morgan');
 const routes = require('./routes');
 const path = require('path');
 const app = express();
