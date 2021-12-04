@@ -94,16 +94,15 @@ router.post('/api/workouts/', (req, res) => {
 
 // getWorkoutsInRange() (public/api.js line 38)
 router.get('/api/workouts/range/', (req, res) => {
-  Workout.find({})
-    .sort('-day')
-    .limit(7)
-    .then(dbWorkout => {
-      console.log(dbWorkout);
-      res.json(dbWorkout);
-    })
-    .catch(err => {
-      res.json(err);
-    });
+	db.Workout.find({})
+	.sort({ date: -1 })
+  .limit(7)
+	  .then((data) => {
+	    res.json(data);
+	  })
+	  .catch((err) => {
+	    res.status(400).json(err);
+	  });
 });
 
 module.exports = router;
