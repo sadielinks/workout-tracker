@@ -25,10 +25,10 @@ const db = require('../models');
 
 // getLastWorkout() (public/api.js line 2)
 // GET entire workout library
-router.get("/workouts/", (req, res) => {
+router.get("/api/workouts", (req, res) => {
   db.Workout.find({})
-    .then((workout) => {
-      res.json(workout);
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
     })
     .catch((err) => {
       res.json(err);
@@ -37,43 +37,15 @@ router.get("/workouts/", (req, res) => {
 
 // addExercise(data) (public/api.js line 13)
 // uses current document to update
-router.put('workouts/:id', (req, res) => {
-  const id = req.params.id;
-  const body = req.body;
-
+router.put('/api/workouts/:id', (req, res) => {
   // findIdAndUpdate: https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
-  db.Workout.findOneAndUpdate({ _id: id }, {
+  db.Workout.findOneAndUpdate({ _id: req.params.id }, {
     $push: {
-      exercises: body
+      exercises: req.body
     }
   })
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((err) => {
-      res.status(400).json(err);
-    });
-});
-
-// 
-router.put("/workouts/:id", (req, res) => {
-  const id = req.params.id;
-  const body = req.body;
-
-  db.Workout.findOneAndUpdate(
-    { _id: id }, {
-    $push: {
-      exercises: body
-    }
-  },
-  // findIdAndUpdate properties:
-    { 
-      new: true, 
-      runValidators: true 
-    }
-  )
-    .then((data) => {
-      res.json(data);
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -81,11 +53,11 @@ router.put("/workouts/:id", (req, res) => {
 });
 
 // createWorkout(data = {}) (public/api.js line 26)
-router.post('/api/workouts/', (req, res) => {
-	db.Workout.create({})
+router.post('api/workouts', ({body}, res) => {
+	db.Workout.create({body})
   // creating newWorkout document for new info 
-	  .then((createWorkout) => {
-	    res.json(createWorkout);
+	  .then((dbWorkout) => {
+	    res.json(dbWorkout);
 	  })
 	  .catch((err) => {
 	    res.status(400).json(err);
@@ -93,12 +65,12 @@ router.post('/api/workouts/', (req, res) => {
 });
 
 // getWorkoutsInRange() (public/api.js line 38)
-router.get('/api/workouts/range/', (req, res) => {
+router.get('api/workouts/range', (req, res) => {
 	db.Workout.find({})
-	.sort({ date: -1 })
-  .limit(7)
-	  .then((data) => {
-	    res.json(data);
+	// .sort({ date: -1 })
+  // .limit(7)
+	  .then((dbWorkout) => {
+	    res.json(dbWorkout);
 	  })
 	  .catch((err) => {
 	    res.status(400).json(err);
