@@ -39,19 +39,25 @@ router.put('/api/workouts/:id', (req, res) => {
   db.Workout.findByIdAndUpdate({ _id: req.params.id }, {
     // push to exercise array
     $push: {
-      exercises: req.body
+      exercises: body
     }
   },
-    {
-      new: true
-    })
-    .then(dbWorkout => {
-      res.json(dbWorkout);
+    // {
+    //   new: true
+    // }
+    )
+    .then((data) => {
+      res.json(data);
     })
     .catch(err => {
       res.status(400).json(err);
     });
 });
+
+
+
+
+
 
 // createWorkout(data = {}) (public/api.js line 26)
 router.post('/api/workouts/', ({ body }, res) => {
