@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const db = require('../models');
 
-// using public/api.js to build following routes
+// using public/api.js to build following routes to return as JSON
 
 // getLastWorkout() (public/api.js line 2)
+// GET entire workout library
 router.get('/api/workouts/', (req, res) => {
   // sum aggregation + addFields: https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/
   db.Workout.aggregate(
