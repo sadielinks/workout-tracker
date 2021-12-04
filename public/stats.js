@@ -39,7 +39,7 @@ function populateChart(data) {
       labels,
       datasets: [
         {
-          label: 'Workout Duration In Minutes',
+          label: 'Your Workout Duration In Minutes',
           backgroundColor: 'red',
           borderColor: 'red',
           data: durations,
@@ -67,7 +67,7 @@ function populateChart(data) {
       labels,
       datasets: [
         {
-          label: 'Pounds',
+          label: 'Total Pounds Lifted',
           data: pounds,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
