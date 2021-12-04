@@ -5,21 +5,32 @@ const db = require('../models');
 
 // getLastWorkout() (public/api.js line 2)
 // GET entire workout library
-router.get('/api/workouts/', (req, res) => {
-  // sum aggregation + addFields: https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/
-  db.Workout.aggregate(
-    [
-      {
-        $addFields: {
-          // based off of seed.js
-          day: '$day',
-          // 
-          totalDuration: {
-            $sum: '$exercises.duration'
-          }
-        }
-      }
-    ])
+
+// router.get('/api/workouts/', (req, res) => {
+//   // sum aggregation + addFields: https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/
+//   db.Workout.aggregate(
+//     [
+//       {
+//         $addFields: {
+//           // based off of seed.js
+//           day: '$day',
+//           // 
+//           totalDuration: {
+//             $sum: '$exercises.duration'
+//           }
+//         }
+//       }
+//     ])
+// });
+
+router.get("/workouts/", (req, res) => {
+	db.Workout.find({})
+		.then((workout) => {
+			res.json(workout);
+		})
+		.catch((err) => {
+			res.json(err);
+		});
 });
 
 // addExercise(data) (public/api.js line 13)
