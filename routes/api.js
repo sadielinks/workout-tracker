@@ -23,6 +23,8 @@ const db = require('../models');
 //     ])
 // });
 
+// getLastWorkout() (public/api.js line 2)
+// GET entire workout library
 router.get("/workouts/", (req, res) => {
   db.Workout.find({})
     .then((workout) => {
@@ -34,6 +36,7 @@ router.get("/workouts/", (req, res) => {
 });
 
 // addExercise(data) (public/api.js line 13)
+// uses current document to update
 router.put('workouts/:id', (req, res) => {
   const id = req.params.id;
   const body = req.body;
@@ -52,11 +55,13 @@ router.put('workouts/:id', (req, res) => {
     });
 });
 
+// 
 router.put("/workouts/:id", (req, res) => {
   const id = req.params.id;
   const body = req.body;
 
-  db.Workout.findOneAndUpdate({ _id: id }, {
+  db.Workout.findOneAndUpdate(
+    { _id: id }, {
     $push: {
       exercises: body
     }
@@ -75,8 +80,6 @@ router.put("/workouts/:id", (req, res) => {
     });
 });
 
-
-
 // createWorkout(data = {}) (public/api.js line 26)
 router.post('/api/workouts/', (req, res) => {
 	db.Workout.create({})
@@ -88,7 +91,6 @@ router.post('/api/workouts/', (req, res) => {
 	    res.status(400).json(err);
 	  });
 });
-
 
 // getWorkoutsInRange() (public/api.js line 38)
 router.get('/api/workouts/range/', (req, res) => {
