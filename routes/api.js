@@ -5,7 +5,8 @@ const Workout = require('../models/Workout');
 
 // getLastWorkout() (public/api.js line 2)
 router.get('/api/workouts', (req, res) => {
-    Workout.find({})
+ // https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/
+    Workout.aggregate()
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
