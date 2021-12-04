@@ -1,23 +1,22 @@
-const router = require("express").Router();
-const Workout = require("../models/Workout.js");
+const router = require('express').Router();
+const Workout = require('../models/Workout');
 
 // using public/api.js to build following routes
 
 // getLastWorkout() (public/api.js line 2)
-router.get('/api/workout', (req, res) => {
-    Workout.find()
+router.get('/api/workouts', (req, res) => {
+    Workout.find({})
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
         .catch(err => {
-            res.status(500).json(err);
+            res.status(400).json(err);
         });
-})
+});
 
 // addExercise(data) (public/api.js line 13)
 router.put('/api/workout/:id', (req, res) => {
-    console.log(req.body);
-    // https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
+\    // https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
     Workout.findByIdAndUpdate(req.params.id, {
         // push to exercise array
         $push: {
@@ -33,28 +32,28 @@ router.put('/api/workout/:id', (req, res) => {
 });
 
 // createWorkout(data = {}) (public/api.js line 26)
-router.post("/api/workout", (req, res) => {
-    Workout.create(req.body)
+router.post('/api/workouts', (req, res) => {
+    Workout.create({})
       .then(dbWorkout => {
         res.json(dbWorkout);
       })
       .catch(err => {
-        res.status(500).json(err);
+        res.status(400).json(err);
       });
   });
 
 
 // getWorkoutsInRange() (public/api.js line 38)
-router.get("/api/workout/range", (req, res) => {
+router.get('/api/workout/range', (req, res) => {
     Workout.find({})
-    .sort("-day")
+    .sort('-day')
     .limit(7)
       .then(dbWorkout => {
         console.log(dbWorkout);
         res.json(dbWorkout);
       })
       .catch(err => {
-        res.status(500).json(err);
+        res.json(err);
       });
   });
 
