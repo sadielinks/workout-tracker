@@ -81,8 +81,8 @@ router.put("/workouts/:id", (req, res) => {
 router.post('/api/workouts/', (req, res) => {
 	db.Workout.create({})
   // creating newWorkout document for new info 
-	  .then((newWorkout) => {
-	    res.json(newWorkout);
+	  .then((createWorkout) => {
+	    res.json(createWorkout);
 	  })
 	  .catch((err) => {
 	    res.status(400).json(err);
