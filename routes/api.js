@@ -21,18 +21,21 @@ router.get('/api/workouts/', (req, res) => {
 
 // addExercise(data) (public/api.js line 13)
 router.put('/api/workouts/:id', (req, res) => {
-   // https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
-    Workout.findByIdAndUpdate(req.params.id, {
+   // findIdAndUpdate + new:true return: https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
+    db.Workout.findByIdAndUpdate({_id: req.params.id}, {
         // push to exercise array
         $push: {
             exercises: req.body
           }
+    },
+    {
+      new: true
     })
     .then(dbWorkout => {
         res.json(dbWorkout);
     })
     .catch(err => {
-        res.status(500).json(err);
+        res.status(400).json(err);
     });
 });
 
