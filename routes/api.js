@@ -35,23 +35,21 @@ router.get("/workouts/", (req, res) => {
 
 // addExercise(data) (public/api.js line 13)
 router.put('/api/workouts/:id', (req, res) => {
-  // findIdAndUpdate + new:true return: https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
-  db.Workout.findByIdAndUpdate({ _id: req.params.id }, {
-    // push to exercise array
+	const id = req.params.id;
+	const body = req.body;
+
+  // findIdAndUpdate: https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
+	db.Workout.findOneAndUpdate({_id: id}, {
     $push: {
       exercises: body
     }
-  },
-    // {
-    //   new: true
-    // }
-    )
-    .then((data) => {
-      res.json(data);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
+  })
+		.then((data) => {
+			res.json(data);
+		})
+		.catch((err) => {
+			res.status(400).json(err);
+		});
 });
 
 
