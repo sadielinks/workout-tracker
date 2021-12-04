@@ -6,14 +6,14 @@ const logger = require('morgan');
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-app.use(logger('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static('public'));
+app.use(logger('dev'));
 
 const db = require('./models')
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Workout", 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Workout', 
 {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -22,8 +22,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Workout",
 }
 );
 
-app.use(require("./routes/api.js"));
-app.use(require("./routes/homeroutes.js"));
+app.use(require('./routes/api'));
+app.use(require('./routes/homeroutes'));
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!!!!`);
