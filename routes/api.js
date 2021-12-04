@@ -78,14 +78,15 @@ router.put("/workouts/:id", (req, res) => {
 
 
 // createWorkout(data = {}) (public/api.js line 26)
-router.post('/api/workouts/', ({ body }, res) => {
-  db.Workout.create(body)
-    .then(dbWorkout => {
-      res.json(dbWorkout);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
+router.post('/api/workouts/', (req, res) => {
+	db.Workout.create({})
+  // creating newWorkout document for new info 
+	  .then((newWorkout) => {
+	    res.json(newWorkout);
+	  })
+	  .catch((err) => {
+	    res.status(400).json(err);
+	  });
 });
 
 
