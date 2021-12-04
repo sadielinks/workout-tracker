@@ -13,7 +13,7 @@ app.use(express.static('public'));
 
 const db = require('./models')
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Workout', 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', 
 {
   useNewUrlParser: true,
   useUnifiedTopology: true,
