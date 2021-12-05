@@ -9,7 +9,6 @@ ___
 #### Table of Contents
 
 * [Description](#description)
-* [Usage](#usage)
 * [Technologies](#technologies)
 * [Screenshots](#screenshots)
 * [Links](#links)
@@ -19,7 +18,7 @@ ___
 
 ## Description <br>
 
-This is A WORK IN PROGRESS!
+[This is a web application](https://workout-tracker-sns.herokuapp.com/?id=61ad1a7e7d7f9100163ba2c8) that allows users to track their workouts and view their progress. Users can track either resistance or cardio workouts. Resistance workouts will record name, type, weight, sets, reps, and duration of each exercise. Cardio workouts will additionally record the distance of each exercise. Their input will be displayed visually within the custom Dashboard. Total workout duration is represented in a line chart while resistance weights will be totaled in a bar chart. Start your fittness goals today!
 
 
 ### User Story:
@@ -41,37 +40,45 @@ Users are able to:
 ```
 
 
-## Usage
-
-
-
 ## Technologies
 
 The technologies used to create this program were: 
+- HTML + CSS
+- Javascript
+- NodeJS
+- ExpressJS
+- MongoDB
+- Mongo Atlas
+- Heroku
 
-<br><br>
+<br>
 
 ## Screenshots
 ```
+Last Workout Display
+```
+![Screenshot](assets/images/screenshot.png)
 
 ```
-![Screenshot](assests/images/screenshot.png)
+Updated Display
+```
+![Screenshot](assets/images/screenshot2.png)
 
 ```
+Workout Dashboard
+```
+![Screenshot](assets/images/screenshot3.png)
 
 ```
-![Screenshot](assests/images/screenshot2.png)
-
+Updated Workout Dashboard
 ```
-
-```
-
+![Screenshot](assets/images/screenshot4.png)
 
 <br>
 
 ## Links
 
-- [Link]()
+- [Deployed App on Heroku](https://workout-tracker-sns.herokuapp.com/?id=61ad1a7e7d7f9100163ba2c8)
 
 - [Google Drive](https://drive.google.com/drive/folders/1Q73SY0TiaKR0SS1sHMcOjcV2U-SoDEEh?usp=sharing)
 
