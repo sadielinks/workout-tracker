@@ -23,7 +23,7 @@ const WorkoutSchema = new Schema(
                     required: true
                 },
                 // resistance + cardio
-                duration: {
+                duration:  {
                     type: Number,
                     required: true
                 },
@@ -46,6 +46,10 @@ const WorkoutSchema = new Schema(
 
             },
         ],
+        // total duration
+        totalDuration: {
+            type: Number,
+        }
     },
 );
 

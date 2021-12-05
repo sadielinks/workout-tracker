@@ -55,30 +55,30 @@ router.put('/api/workouts/:id', (req, res) => {
 });
 
 // createWorkout(data = {}) (public/api.js line 26)
-router.post('/api/workouts', ({body}, res) => {
-	db.Workout.create({body})
-  // creating newWorkout document for new info 
-	  .then((dbWorkout) => {
-	    res.json(dbWorkout);
-	  })
-	  .catch((err) => {
-    // error otherwise
-	    res.status(400).json(err);
-	  });
+router.post('/api/workouts', ({ body }, res) => {
+  db.Workout.create({ body })
+    // creating newWorkout document for new info 
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
+    })
+    .catch((err) => {
+      // error otherwise
+      res.status(400).json(err);
+    });
 });
 
 // getWorkoutsInRange() (public/api.js line 38)
 router.get('/api/workouts/range', (req, res) => {
-	db.Workout.find({})
-	// .sort({ date: -1 })
-  // .limit(7)
-	  .then((dbWorkout) => {
-	    res.json(dbWorkout);
-	  })
+  db.Workout.find({})
+    // .sort({ date: -1 })
+    // .limit(7)
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
+    })
     // error otherwise
-	  .catch((err) => {
-	    res.status(400).json(err);
-	  });
+    .catch((err) => {
+      res.status(400).json(err);
+    });
 });
 
 module.exports = router;
