@@ -25,7 +25,7 @@ const db = require('../models');
 
 // getLastWorkout() (public/api.js line 2)
 // GET entire workout library
-router.get("/api/workouts", (req, res) => {
+router.get('/api/workouts', (req, res) => {
   db.Workout.find({})
     .then((dbWorkout) => {
       res.json(dbWorkout);
@@ -41,6 +41,11 @@ router.get("/api/workouts", (req, res) => {
 router.put('/api/workouts/:id', (req, res) => {
   // findIdAndUpdate: https://mongoosejs.com/docs/api.html#model_Model.findByIdAndUpdate
   db.Workout.findOneAndUpdate({ _id: req.params.id }, {
+    // totalDuration display
+    $inc: { 
+      totalDuration: req.body.duration 
+    },
+    // send
     $push: {
       exercises: req.body
     }
